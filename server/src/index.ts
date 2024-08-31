@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-app.use(cors({credentials: true, origin: true}));
+app.use(cors({credentials: true, origin: ["http://localhost:5173",process.env.SITE_URL!]}));
 app.use(express.json());
 app.use(cookieParser());
 config();

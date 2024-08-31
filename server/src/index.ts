@@ -30,7 +30,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: true, // Set to true if using HTTPS
-    sameSite: 'lax' // Ensure cookies are sent in cross-site requests
+    sameSite: 'none'// Ensure cookies are sent in cross-site requests
   }
 }));
 

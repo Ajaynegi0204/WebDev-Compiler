@@ -31,7 +31,7 @@ app.use((0, express_session_1.default)({
     cookie: {
         httpOnly: true,
         secure: true, // Set to true if using HTTPS
-        sameSite: 'lax' // Ensure cookies are sent in cross-site requests
+        sameSite: 'none' // Ensure cookies are sent in cross-site requests
     }
 }));
 // CORS Configuration

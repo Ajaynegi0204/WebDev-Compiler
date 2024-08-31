@@ -25,5 +25,5 @@ app.use('/user', userRouter);
 dbConnect();
 app.listen(4000, () => {
     
-    console.log("Listening on port 4000");
+    console.log("Listening on porrrtt 4000");
 })

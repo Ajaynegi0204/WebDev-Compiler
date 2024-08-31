@@ -7,12 +7,12 @@ import { userRouter } from "./routes/userRouter";
 import cookieParser from "cookie-parser";
 
 
+config();
 const app = express();
-
-app.use(cors({credentials: true, origin: ["http://localhost:5173",process.env.SITE_URL!]}));
 app.use(express.json());
 app.use(cookieParser());
-config();
+
+app.use(cors({credentials: true, origin: ["http://localhost:5173",process.env.SITE_URL!]}));
 
 
 

@@ -91,8 +91,6 @@ export const api = createApi({
       }),
       providesTags: ["allCodes"],
     }),
-
-
   }),
 });
 

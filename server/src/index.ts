@@ -7,17 +7,15 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
-// Load environment variables
 config();
 
-// Create Express app
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
 // Set up session store with MongoDB
 const sessionStore = MongoStore.create({
-  mongoUrl: process.env.MONGO_URI as string, // Your MongoDB connection string
+  mongoUrl: process.env.MONGO_URI as string, // MongoDB connection string
   collectionName: 'sessions'
 });
 
@@ -29,8 +27,8 @@ app.use(session({
   store: sessionStore,
   cookie: {
     httpOnly: true,
-    secure: true, // Set to true if using HTTPS
-    sameSite: 'none'// Ensure cookies are sent in cross-site requests
+    secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
+    sameSite: 'none' // Required for cross-site cookies
   }
 }));
 
@@ -49,7 +47,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-// Use routers
 app.use('/compiler', compilerRouter);
 app.use('/user', userRouter);
 
